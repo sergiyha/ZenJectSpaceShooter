@@ -23,7 +23,6 @@ namespace Test
 			movementController.Init(this.transform);
 		}
 
-		
 
 		private void OnDestroy()
 		{

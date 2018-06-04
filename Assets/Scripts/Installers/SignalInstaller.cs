@@ -1,11 +1,14 @@
 ﻿using Inputs.Signals;
 using Zenject;
 
-public class SignalInstaller : Installer<SignalInstaller>
+namespace Installers
 {
-	public override void InstallBindings()
+	public class SignalInstaller : Installer<SignalInstaller>
 	{
-		Container.DeclareSignal<MoveHorizontalSignal>();
-		Container.DeclareSignal<MoveVerticalSignal>();
+		public override void InstallBindings()
+		{
+			Container.DeclareSignal<MoveHorizontalSignal>();
+			Container.DeclareSignal<MoveVerticalSignal>();
+		}
 	}
 }

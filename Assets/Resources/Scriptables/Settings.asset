@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63a2bb6fc5512b841afec0e4175f806a, type: 3}
+  m_Name: Settings
+  m_EditorClassIdentifier: 
+  MovementSettings:
+    MinMaxX: {x: -23, y: 23}
+    MinMaxY: {x: -40, y: 40}
+    Speed: 100

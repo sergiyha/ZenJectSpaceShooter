@@ -2,12 +2,16 @@
 using Inputs;
 using Zenject;
 
-public class StartupInstaller : MonoInstaller
+namespace Installers
 {
-	public override void InstallBindings()
+	public class StartupInstaller : MonoInstaller
 	{
-		Container.BindInterfacesTo<InputHandler>().AsSingle();
-		Container.Bind<MovementController>().AsTransient();
-		SignalInstaller.Install(Container);
+		public override void InstallBindings()
+		{
+			Container.BindInterfacesTo<InputHandler>().AsSingle();
+			Container.Bind<MovementController>().AsTransient();
+			SettingsInstaller.Install(Container);
+			SignalInstaller.Install(Container);
+		}
 	}
 }
