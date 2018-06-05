@@ -9,7 +9,6 @@ namespace Controllers
 		private Settings _settings;
 		private Transform transform;
 		private bool _isInited;
-		private float speed = 100;
 
 		public MovementController
 		(
