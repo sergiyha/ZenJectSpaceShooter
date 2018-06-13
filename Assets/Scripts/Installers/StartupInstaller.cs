@@ -1,15 +1,15 @@
-﻿using Controllers;
+﻿using Assets.Scripts.Behaviours;
 using Inputs;
 using Zenject;
 
-namespace Installers
+namespace Assets.Scripts.Installers
 {
 	public class StartupInstaller : MonoInstaller
 	{
 		public override void InstallBindings()
 		{
 			Container.BindInterfacesTo<InputHandler>().AsSingle();
-			Container.Bind<MovementController>().AsTransient();
+			BehaviourInstaller.Install(Container);
 			SettingsInstaller.Install(Container);
 			SignalInstaller.Install(Container);
 		}

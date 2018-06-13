@@ -1,9 +1,7 @@
 ﻿using UnityEngine;
 using UnityEditor;
 using System.IO;
-using ScriptableObjects;
-
-
+using Assets.Scripts.ScriptableObjects;
 
 
 public static class ScriptableObjectUtility

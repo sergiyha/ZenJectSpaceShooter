@@ -1,5 +1,6 @@
 ﻿using Zenject;
-namespace Inputs.Signals
+
+namespace Assets.Scripts.Inputs.Signals
 {
 	public class MoveHorizontalSignal : Signal<MoveHorizontalSignal, float>
 	{

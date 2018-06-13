@@ -1,42 +1,75 @@
-﻿using Zenject;
+﻿using Assets.Scripts.Inputs.Signals;
+using Zenject;
 using UnityEngine;
-using Inputs.Signals;
 
 namespace Inputs
 {
 	public class InputHandler : ITickable
 	{
-		private MoveVerticalSignal verticalMovementSignal;
-		private MoveHorizontalSignal horizontalMovementSignal;
+		private MoveVerticalSignal _verticalMovementSignal;
+		private MoveHorizontalSignal _horizontalMovementSignal;
+		private BeginFiringSignal _beginFiringSignal;
+		private FinishFiringSignal _finishFiringSignal;
 
 		private const string HAxis = "Horizontal";
 		private const string VAxis = "Vertical";
-
+	
+		private bool _fireStarted;
 
 		public InputHandler
 		(
 			MoveVerticalSignal verticalMovementSignal,
-			MoveHorizontalSignal horizontalMovementSignal
+			MoveHorizontalSignal horizontalMovementSignal,
+			BeginFiringSignal beginFiringSignal,
+			FinishFiringSignal finishFiringSignal
 		)
 		{
-			this.verticalMovementSignal = verticalMovementSignal;
-			this.horizontalMovementSignal = horizontalMovementSignal;
+			_beginFiringSignal = beginFiringSignal;
+			_finishFiringSignal = finishFiringSignal;
 
+			_verticalMovementSignal = verticalMovementSignal;
+			_horizontalMovementSignal = horizontalMovementSignal;
+		}
+
+		private void SetFireState(bool val)
+		{
+			_fireStarted = val;
 		}
 
 		public void Tick()
+		{
+			HandleAxis();
+			HandleFires();
+		}
+
+		private void HandleAxis()
 		{
 			var x = Input.GetAxis(HAxis);
 			var y = Input.GetAxis(VAxis);
 
 			if (!x.Equals(0))
 			{
-				horizontalMovementSignal.Fire(x);
+				_horizontalMovementSignal.Fire(x);
 			}
 
 			if (!y.Equals(0))
 			{
-				verticalMovementSignal.Fire(y);
+				_verticalMovementSignal.Fire(y);
+			}
+		}
+
+		private void HandleFires()
+		{
+			if (Input.GetKeyDown(KeyCode.Space) && !_fireStarted)
+			{
+				_beginFiringSignal.Fire();
+				SetFireState(true);
+			}
+
+			if (Input.GetKeyUp(KeyCode.Space))
+			{
+				_finishFiringSignal.Fire();
+				SetFireState(false);
 			}
 		}
 	}

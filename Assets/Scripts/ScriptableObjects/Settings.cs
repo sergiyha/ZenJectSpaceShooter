@@ -1,17 +1,25 @@
-﻿using Controllers;
-using System.Collections;
-using System.Collections.Generic;
+﻿using Assets.Scripts.All_In.Weapons;
+using Assets.Scripts.Behaviours;
 using UnityEngine;
 
-namespace ScriptableObjects
+namespace Assets.Scripts.ScriptableObjects
 {
 	public class Settings : ScriptableObject
 	{
-		public MovementController.Settings MovementSettings;
+		[SerializeField]
+		private MovementBehaviour.Settings MovementSettings;
 
-		public MovementController.Settings GetMovementSettings
+		[SerializeField]
+		private Weapon.Settings WeaponSettings;
+
+		public MovementBehaviour.Settings GetMovementSettings
 		{
 			get { return MovementSettings; }
+		}
+
+		public Weapon.Settings GetWeaponSettings
+		{
+			get { return WeaponSettings; }
 		}
 	}
 }

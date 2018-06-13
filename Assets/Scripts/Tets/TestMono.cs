@@ -1,35 +1,35 @@
-﻿using Controllers;
-using Inputs.Signals;
-using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using Assets.Scripts.Behaviours;
+using Assets.Scripts.Behaviours.Weapons;
+using Assets.Scripts.Enums;
+using Assets.Scripts.Factories;
 using UnityEngine;
 using Zenject;
 
-namespace Test
+namespace Assets.Scripts.Tets
 {
 	public class TestMono : MonoBehaviour
 	{
-
-		private MovementController movementController;
+		private MovementBehaviour _movementBehaviour;
+		private IWeaponBehaviour _weaponBehaviour;
 
 		[Inject]
 		private void Init
 		(
-			MovementController movementController
+			MovementBehaviour movementBehaviour,
+			WeaponBehaviourFactory wbFactory
 		)
 		{
-			this.movementController = movementController;
-			movementController.Init(this.transform);
-		}
+			_weaponBehaviour = wbFactory.Create(Oponents.Player);
+			_weaponBehaviour.Init(this.transform);
 
+			_movementBehaviour = movementBehaviour;
+			_movementBehaviour.Init(this.transform);
+		}
 
 		private void OnDestroy()
 		{
 
 		}
-
-
 
 	}
 }

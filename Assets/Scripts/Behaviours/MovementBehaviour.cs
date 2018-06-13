@@ -1,16 +1,16 @@
-﻿using Inputs.Signals;
-using System;
+﻿using System;
+using Assets.Scripts.Inputs.Signals;
 using UnityEngine;
 
-namespace Controllers
+namespace Assets.Scripts.Behaviours
 {
-	public class MovementController
+	public class MovementBehaviour
 	{
 		private Settings _settings;
 		private Transform transform;
 		private bool _isInited;
 
-		public MovementController
+		public MovementBehaviour
 		(
 			MoveVerticalSignal ySignal,
 			MoveHorizontalSignal xSignal,
