@@ -21,27 +21,6 @@ namespace Assets.Scripts.All_In.Weapons
 		private Bullet _bullet;
 
 
-
-		public void Initialize()
-		{
-			throw new System.NotImplementedException();
-		}
-
-		private void Start()
-		{
-			Initilazion();
-		}
-
-
-		private void Awake()
-		{
-
-		}
-
-		private void Initilazion()
-		{
-		}
-
 		private void OnDrawGizmos()
 		{
 			var objPosition = this.transform.position;
@@ -67,10 +46,10 @@ namespace Assets.Scripts.All_In.Weapons
 				yield return new WaitForSeconds(releaseInterval);
 
 				var bullet = _bulletFactory.Create();
-				var GunIndex = Random.Range(0, _settings.Guns.Count);
+				var gunIndex = Random.Range(0, _settings.Guns.Count);
 
-				bullet.transform.localPosition = (Vector3)_settings.Guns[GunIndex].starPos + transform.position;
-				bullet.Init(_settings.Guns[GunIndex].endPos - _settings.Guns[GunIndex].starPos,_settings.BulletSpeed);
+				bullet.transform.localPosition = (Vector3)_settings.Guns[gunIndex].starPos + transform.position;
+				bullet.Init(_settings.Guns[gunIndex].endPos - _settings.Guns[gunIndex].starPos,_settings.BulletSpeed);
 
 				Debug.LogError("Piu");
 			}

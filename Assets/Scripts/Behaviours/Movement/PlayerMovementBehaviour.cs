@@ -1,16 +1,18 @@
 ﻿using System;
+using Assets.Scripts.Behaviours.Weapons;
 using Assets.Scripts.Inputs.Signals;
 using UnityEngine;
+using Zenject;
 
-namespace Assets.Scripts.Behaviours
+namespace Assets.Scripts.Behaviours.Movement
 {
-	public class MovementBehaviour
+	public class PlayerMovementBehaviour : IMovementBehaviour
 	{
 		private Settings _settings;
 		private Transform transform;
 		private bool _isInited;
 
-		public MovementBehaviour
+		public PlayerMovementBehaviour
 		(
 			MoveVerticalSignal ySignal,
 			MoveHorizontalSignal xSignal,
@@ -64,5 +66,8 @@ namespace Assets.Scripts.Behaviours
 			public float Speed;
 		}
 
+		public class PlayerMovementBehaviourFactory : Factory<PlayerMovementBehaviour>
+		{
+		}
 	}
 }

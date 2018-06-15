@@ -60,13 +60,13 @@ namespace Inputs
 
 		private void HandleFires()
 		{
-			if (Input.GetKeyDown(KeyCode.Space) && !_fireStarted)
+			if (Input.GetKeyDown(KeyCode.Q) && !_fireStarted)
 			{
 				_beginFiringSignal.Fire();
 				SetFireState(true);
 			}
 
-			if (Input.GetKeyUp(KeyCode.Space))
+			if (Input.GetKeyUp(KeyCode.Q))
 			{
 				_finishFiringSignal.Fire();
 				SetFireState(false);

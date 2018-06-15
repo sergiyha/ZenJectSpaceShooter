@@ -14,11 +14,11 @@ MonoBehaviour:
   MovementSettings:
     MinMaxX: {x: -23, y: 23}
     MinMaxY: {x: -40, y: 40}
-    Speed: 100
+    Speed: 50
   WeaponSettings:
-    BulletSpeed: 150
-    BulletsCount: 40
-    PerSecondsCount: 4
+    BulletSpeed: 1000
+    BulletsCount: 10
+    PerSecondsCount: 1
     Guns:
     - starPos: {x: -2.83, y: 0}
       endPos: {x: 0, y: 110}

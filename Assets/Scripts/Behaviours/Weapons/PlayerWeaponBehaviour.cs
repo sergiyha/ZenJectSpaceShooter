@@ -18,7 +18,6 @@ namespace Assets.Scripts.Behaviours.Weapons
 		{
 			_weapon = weapon.Create();
 			finishFiringSiglal += OnFireFinish;
-
 			beginFiringSignal += OnFireBegin;
 		}
 
@@ -37,8 +36,6 @@ namespace Assets.Scripts.Behaviours.Weapons
 		public override void Init(Transform transform)
 		{
 			_weapon.transform.SetParent(transform, false);
-
-			//throw new System.NotImplementedException();
 		}
 
 		public class PlayerWeaporBehaviourFactory : Factory<PlayerWeaponBehaviour>
