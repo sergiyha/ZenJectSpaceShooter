@@ -9,7 +9,7 @@ using Zenject;
 
 namespace Assets.Scripts.Tets
 {
-	public class PlayerBehaviour : MonoBehaviour, ICharacterBehaviour
+	public class PlayerBehaviour : MonoBehaviour
 	{
 		private IMovementBehaviour _movementBehaviour;
 		private IWeaponBehaviour _weaponBehaviour;
@@ -27,6 +27,8 @@ namespace Assets.Scripts.Tets
 			_movementBehaviour = movementBehaviourFactory.Create(Oponents.Player);
 			_movementBehaviour.Init(this.transform);
 		}
+
+
 
 		private void OnDestroy()
 		{

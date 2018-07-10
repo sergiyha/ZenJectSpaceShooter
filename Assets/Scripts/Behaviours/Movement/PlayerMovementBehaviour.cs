@@ -3,6 +3,7 @@ using Assets.Scripts.Behaviours.Weapons;
 using Assets.Scripts.Inputs.Signals;
 using UnityEngine;
 using Zenject;
+using Object = UnityEngine.Object;
 
 namespace Assets.Scripts.Behaviours.Movement
 {
@@ -57,6 +58,21 @@ namespace Assets.Scripts.Behaviours.Movement
 			_isInited = true;
 			this.transform = transform;
 		}
+
+		public void PerformToMove(object payload)
+		{
+			//throw new NotImplementedException();
+		}
+
+		public void PerformToMove(Object payload)
+		{
+			throw new NotImplementedException();
+		}
+
+	
+
+		
+		
 
 		[Serializable]
 		public class Settings

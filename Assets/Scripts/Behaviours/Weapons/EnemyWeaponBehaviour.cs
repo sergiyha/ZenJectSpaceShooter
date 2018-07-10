@@ -18,7 +18,7 @@ namespace Assets.Scripts.Behaviours.Weapons
 
 		public override void Init(Transform transform)
 		{
-			throw new System.NotImplementedException();
+			//throw new System.NotImplementedException();
 		}
 
 		public class EnemyWeaponBehaviourFactory : Factory<EnemyWeaponBehaviour>

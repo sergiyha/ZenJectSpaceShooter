@@ -1,6 +1,8 @@
 ﻿using Assets.Scripts.All_In.Weapons;
 using Assets.Scripts.Behaviours;
+using Assets.Scripts.Behaviours.Characters;
 using Assets.Scripts.Behaviours.Movement;
+using Assets.Scripts.Controllers;
 using UnityEngine;
 
 namespace Assets.Scripts.ScriptableObjects
@@ -13,6 +15,16 @@ namespace Assets.Scripts.ScriptableObjects
 		[SerializeField]
 		private Weapon.Settings WeaponSettings;
 
+		[SerializeField] private WavesController.SettingsWrapper WavesSettings;
+
+		[SerializeField] private EnemyBehaviour.EnemiesSettings Enemies;
+
+
+		public EnemyBehaviour.EnemiesSettings GetEnemiesSettings
+		{
+			get { return Enemies; }
+		}
+
 		public PlayerMovementBehaviour.Settings GetMovementSettings
 		{
 			get { return MovementSettings; }
@@ -21,6 +33,11 @@ namespace Assets.Scripts.ScriptableObjects
 		public Weapon.Settings GetWeaponSettings
 		{
 			get { return WeaponSettings; }
+		}
+
+		public WavesController.SettingsWrapper GetWavesSettings
+		{
+			get { return WavesSettings; }
 		}
 	}
 }

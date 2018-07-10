@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Inputs.Signals;
+﻿using Assets.Scripts.Controllers.Signals;
+using Assets.Scripts.Inputs.Signals;
 using Zenject;
 
 namespace Assets.Scripts.Installers
@@ -7,12 +8,12 @@ namespace Assets.Scripts.Installers
 	{
 		public override void InstallBindings()
 		{
-
 			Container.DeclareSignal<MoveHorizontalSignal>();
 			Container.DeclareSignal<MoveVerticalSignal>();
 			Container.DeclareSignal<BeginFiringSignal>();
 			Container.DeclareSignal<FinishFiringSignal>();
 
+			Container.DeclareSignal<EnemyWasDestroyedSignal>();
 		}
 	}
 }

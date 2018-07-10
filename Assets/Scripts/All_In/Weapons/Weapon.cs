@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Scripts.Enums;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,8 +19,7 @@ namespace Assets.Scripts.All_In.Weapons
 
 		[Inject] private Bullet.BulletFactory _bulletFactory;
 
-		private Bullet _bullet;
-
+		private Oponents _ownerType = Oponents.NaN;
 
 		private void OnDrawGizmos()
 		{
@@ -30,6 +30,11 @@ namespace Assets.Scripts.All_In.Weapons
 			Gizmos.color = Color.blue;
 			Gizmos.DrawLine((Vector3)_settings.Guns[0].starPos + objPosition, (Vector3)_settings.Guns[0].endPos + objPosition);
 
+		}
+
+		private void Init(Oponents userType)
+		{
+			_ownerType = userType;
 		}
 
 
@@ -49,13 +54,13 @@ namespace Assets.Scripts.All_In.Weapons
 				var gunIndex = Random.Range(0, _settings.Guns.Count);
 
 				bullet.transform.localPosition = (Vector3)_settings.Guns[gunIndex].starPos + transform.position;
-				bullet.Init(_settings.Guns[gunIndex].endPos - _settings.Guns[gunIndex].starPos,_settings.BulletSpeed);
+				bullet.Init(_settings.Guns[gunIndex].endPos - _settings.Guns[gunIndex].starPos, _settings.BulletSpeed, _settings.bulletDamage, _ownerType);
 
 				Debug.LogError("Piu");
 			}
 		}
 
-		
+
 
 		public void FinishFire()
 		{
@@ -66,6 +71,7 @@ namespace Assets.Scripts.All_In.Weapons
 		[Serializable]
 		public class Settings
 		{
+			public int bulletDamage = 10;
 			public float BulletSpeed = 100;
 			public int BulletsCount = 20;
 			public float PerSecondsCount = 4;

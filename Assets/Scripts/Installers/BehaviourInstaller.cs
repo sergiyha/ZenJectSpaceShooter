@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.All_In.Weapons;
+using Assets.Scripts.Behaviours.Characters;
 using Assets.Scripts.Behaviours.Movement;
 using Assets.Scripts.Behaviours.Weapons;
 using Assets.Scripts.Factories;
@@ -31,10 +32,8 @@ namespace Assets.Scripts.Installers
 
 			Container.BindFactory<Weapon, Weapon.WeaponFactory>().FromNewComponentOnNewGameObject();
 			Container.BindFactory<Bullet, Bullet.BulletFactory>().FromComponentInNewPrefabResource(PrefabsConfig.BulletPrefabPath).UnderTransform(new GameObject("Bullets").transform);
-			//Container.Bind<Weapon>().FromNewComponentSibling();
 
-
-			//Container.BindFactory<WeaponBehaviour, WeaponBehaviourFactory>().To<PlayerWeaponBehaviour>();
+			Container.BindFactory<EnemyBehaviour, EnemyBehaviour.EnemyBehaviourFactory>().FromNewComponentOnNewGameObject();
 		}
 	}
 }
