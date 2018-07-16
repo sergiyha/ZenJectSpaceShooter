@@ -16,6 +16,7 @@ MonoBehaviour:
     MinMaxY: {x: -40, y: 40}
     Speed: 50
   WeaponSettings:
+    bulletDamage: 10
     BulletSpeed: 70
     BulletsCount: 10
     PerSecondsCount: 1
@@ -108,6 +109,11 @@ MonoBehaviour:
   Enemies:
     Enemies:
     - ViewPath: Prefabs/UFO
-      LifePoints: 100
+      LifePoints: 50
       MovementSpeed: 20
       Type: 1
+      HittingEffects:
+        Radius: 2.5
+        HittingParticles:
+        - {fileID: 198609776378416402, guid: 669702a7d7ea6774faec396e0f8124e7, type: 2}
+        - {fileID: 198108276616824896, guid: fea6c4e5e741d9e4d9ac46627f1afa85, type: 2}

@@ -1,4 +1,6 @@
-﻿namespace Assets.Scripts.Configs
+﻿using System.Globalization;
+
+namespace Assets.Scripts.Configs
 {
 	public static class Configs
 	{
@@ -16,6 +18,7 @@
 		public static class Prefabs
 		{
 			public const string BulletPrefabPath = "Prefabs/Bullet";
+			public const string EnemyUiPath = "Prefabs/EnemyUI";
 		}
 	}
 }

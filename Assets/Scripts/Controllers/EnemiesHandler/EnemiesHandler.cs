@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Assets.Scripts.All_In.Components;
 using Assets.Scripts.Behaviours.Characters;
 using UnityEngine;
 
@@ -31,7 +32,13 @@ namespace Assets.Scripts.Controllers.EnemiesHandler
 			_enemiesPool.Remove(go);
 		}
 
-		public void MakeDamage(GameObject go,int damageValue)
+		public void DestroyEnemy(GameObject go)
+		{
+			RemoveEnemy(go);
+			Object.Destroy(go);
+		}
+
+		public void MakeDamage(GameObject go, int damageValue)
 		{
 			if (!_enemiesPool.ContainsKey(go))
 			{

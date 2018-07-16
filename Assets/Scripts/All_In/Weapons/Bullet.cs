@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Assets.Scripts.All_In.Components;
 using Assets.Scripts.Controllers.EnemiesHandler;
 using Assets.Scripts.Enums;
 using UniRx.Triggers;
@@ -13,6 +14,8 @@ namespace Assets.Scripts.All_In.Weapons
 		private Vector2 _direction;
 		private float _speed;
 		private int _damage;
+
+		private const float timeToDestroy = 4f;
 
 		private bool _isInited = false;
 		private Oponents _ownerType = Oponents.NaN;
@@ -32,6 +35,7 @@ namespace Assets.Scripts.All_In.Weapons
 		private void Initilization(IEnemiesHandler enemiesHandler)
 		{
 			_enemiesHandler = enemiesHandler;
+			gameObject.AddComponent<DestroyComponent>().InitData(this.gameObject, timeToDestroy);
 		}
 
 		public void Init(Vector2 direction, float speed, int damage, Oponents ownerType)

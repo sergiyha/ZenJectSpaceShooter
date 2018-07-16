@@ -6,6 +6,7 @@ namespace Assets.Scripts.Controllers.EnemiesHandler
 {
 	public interface IEnemiesHandler
 	{
+		void DestroyEnemy(GameObject go);
 		void AddEnemy(GameObject go, EnemyBehaviour eb);
 		void RemoveEnemy(GameObject go);
 		void MakeDamage(GameObject go, int damageValue);
