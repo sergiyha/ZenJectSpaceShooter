@@ -17,8 +17,8 @@ MonoBehaviour:
     Speed: 50
   WeaponSettings:
     bulletDamage: 10
-    BulletSpeed: 70
-    BulletsCount: 10
+    BulletSpeed: 180.4
+    BulletsCount: 50
     PerSecondsCount: 1
     Guns:
     - starPos: {x: -2.83, y: 0}
@@ -105,11 +105,11 @@ MonoBehaviour:
       TimeBetweenSubwave: 0.5
       SubwavesCount: 100
       EnemySpeed: 25
-      EnemiesInSubwave: 10
+      EnemiesInSubwave: 100
   Enemies:
     Enemies:
     - ViewPath: Prefabs/UFO
-      LifePoints: 50
+      LifePoints: 200
       MovementSpeed: 20
       Type: 1
       HittingEffects:

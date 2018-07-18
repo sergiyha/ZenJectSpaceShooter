@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using Assets.Scripts.All_In.Components.Effects;
-using Assets.Scripts.All_In.Weapons;
 using Assets.Scripts.Behaviours.Movement;
 using Assets.Scripts.Behaviours.Weapons;
 using Assets.Scripts.Controllers.EnemiesHandler;
