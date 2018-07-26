@@ -4,7 +4,7 @@ namespace Assets.Scripts.UI
 {
 	public abstract class BaseView : MonoBehaviour, IBaseView<object>
 	{
-		protected virtual void Show()
+		public virtual void Show()
 		{
 			this.gameObject.SetActive(true);
 		}
@@ -14,7 +14,7 @@ namespace Assets.Scripts.UI
 			this.gameObject.SetActive(false );
 		}
 
-		public virtual void Init(object payload)
+		public virtual void Init(object payload = null)
 		{
 		}
 	}

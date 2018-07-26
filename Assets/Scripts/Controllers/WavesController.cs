@@ -6,6 +6,7 @@ using Assets.Scripts.All_In.Async;
 using Assets.Scripts.Behaviours.Characters;
 using Assets.Scripts.Controllers.EnemiesHandler;
 using Assets.Scripts.Controllers.Signals;
+using Assets.Scripts.GameSignals;
 using Assets.Scripts.Utilities.StructUtils;
 using UnityEngine;
 using Zenject;
@@ -25,10 +26,19 @@ namespace Assets.Scripts.Controllers
 
 		private EnemyWasDestroyedSignal _enemyDestroyedSignal;
 
+
 		[Inject] private SettingsWrapper _wavesData;
 
 		[Inject] private IEnemiesHandler _enemiesHandler;
+		[Inject] private StartGameSignal _gameStartedSignal;
 
+		[Inject]
+		private void Init()
+		{
+			_currentWaveSettings = _wavesData.GetNeededSetting(_currentWaveNumber);
+			_enemyDestroyedSignal += OnEnemyWasUsed;
+			_asyncProcessor.StartCoroutine(StartWave(true));
+		}
 		private AsyncProcessor _asyncProcessor;
 
 		public WavesController
@@ -39,15 +49,13 @@ namespace Assets.Scripts.Controllers
 			AsyncProcessor asyncProcessor
 		)
 		{
+
 			_enemyDestroyedSignal = enemyDestroyedSignal;
 			_wavesData = settings;
 			_enemyFactory = enemyBehFactory;
 			_asyncProcessor = asyncProcessor;
-
-			_currentWaveSettings = settings.GetNeededSetting(_currentWaveNumber);
-			_enemyDestroyedSignal += OnEnemyWasUsed;
-			_asyncProcessor.StartCoroutine(StartWave());
 		}
+
 
 		~WavesController()
 		{
@@ -92,13 +100,22 @@ namespace Assets.Scripts.Controllers
 			_enemiesWereUsedInSubwave = 0;
 			_currentWaveNumber++;
 			_currentWaveSettings = _wavesData.GetNeededSetting(_currentWaveNumber);
-			_asyncProcessor.StartCoroutine(StartWave());
+			_asyncProcessor.StartCoroutine(StartWave(false));
 		}
 
-		private IEnumerator StartWave()
+		private IEnumerator StartWave(bool isfirst)
 		{
 			Debug.LogError("Wave started");
-			yield return new WaitForSeconds(_currentWaveSettings.TimeBetweenWaves);
+			if (isfirst)
+			{
+
+				_gameStartedSignal.Fire(default(object));
+				yield return new WaitForSeconds(_currentWaveSettings.TimeToReady + 1);
+			}
+			else
+			{
+				yield return new WaitForSeconds(_currentWaveSettings.TimeBetweenWaves);
+			}
 			yield return StartSubwave(true);
 		}
 
@@ -148,6 +165,7 @@ namespace Assets.Scripts.Controllers
 		{
 			public int Number;
 
+			public float TimeToReady;
 			public float TimeBetweenEnemy = 0.3f;
 			public float TimeBetweenWaves = 2;
 			public float TimeBetweenSubwave = 0.5f;

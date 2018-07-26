@@ -33,6 +33,7 @@ namespace Assets.Scripts.Installers
 
 			Container.BindFactory<Weapon, Weapon.WeaponFactory>().FromNewComponentOnNewGameObject();
 			Container.BindFactory<Bullet, Bullet.BulletFactory>().FromComponentInNewPrefabResource(PrefabsConfig.BulletPrefabPath).UnderTransform(new GameObject("Bullets").transform);
+
 			Container.Bind<EnemyUi>().FromComponentInNewPrefabResource(PrefabsConfig.EnemyUiPath).AsTransient();
 
 			Container.BindFactory<EnemyBehaviour, EnemyBehaviour.EnemyBehaviourFactory>().FromNewComponentOnNewGameObject();
