@@ -38,6 +38,14 @@ namespace Assets.Scripts.All_In.Weapons
 			gameObject.AddComponent<DestroyComponent>().InitData(this.gameObject, timeToDestroy);
 		}
 
+		private void Start()
+		{
+		}
+
+		private void Awake()
+		{
+		}
+
 		public void Init(Vector2 direction, float speed, int damage, Oponents ownerType)
 		{
 			_fastCollisionDetector = _fastCollisionDetector ?? this.gameObject.GetComponent<FastCollisionDetector>() ?? this.gameObject.AddComponent<FastCollisionDetector>();
@@ -63,7 +71,6 @@ namespace Assets.Scripts.All_In.Weapons
 
 		public class BulletFactory : Factory<Bullet>
 		{
-
 		}
 	}
 }

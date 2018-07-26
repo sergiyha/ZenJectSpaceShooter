@@ -17,6 +17,7 @@ namespace Assets.Scripts.Configs
 
 		public static class Prefabs
 		{
+			public const string UIMainPath = "Prefabs/UI/";
 			public const string BulletPrefabPath = "Prefabs/Bullet";
 			public const string EnemyUiPath = "Prefabs/EnemyUI";
 		}
