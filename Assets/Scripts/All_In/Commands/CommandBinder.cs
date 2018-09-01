@@ -8,14 +8,17 @@ namespace Assets.Scripts.All_In.Commands
 	{
 		//Signals
 		[Inject] private StartGameSignal _startGameSignal;
+		[Inject] private FinishGameSignal _finishSignals;
 
 		//Commands
 		[Inject] private OpenStartViewCommand _startViewCommand;
+		[Inject] private OpenFinishingViewCommand _finishingCommand;
 
 		[Inject]
 		private void Bind()
 		{
 			_startGameSignal += _startViewCommand.Execute;
+			_finishSignals += _finishingCommand.Execute;
 		}
 
 		~ CommandBinder()

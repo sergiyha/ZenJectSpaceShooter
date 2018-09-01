@@ -274,6 +274,8 @@ MonoBehaviour:
     - Index: 2
       CountingText: 1
       AdditionalText: Go!
+  _top: {fileID: 114468087984944736}
+  _bot: {fileID: 114518623727140682}
 --- !u!114 &114708334229442492
 MonoBehaviour:
   m_ObjectHideFlags: 1

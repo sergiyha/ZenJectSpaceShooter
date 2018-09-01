@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Controllers.Signals;
+using Assets.Scripts.Controllers.Signals.PowerUp;
 using Assets.Scripts.GameSignals;
 using Assets.Scripts.Inputs.Signals;
 using Zenject;
@@ -14,8 +15,11 @@ namespace Assets.Scripts.Installers
 			Container.DeclareSignal<BeginFiringSignal>();
 			Container.DeclareSignal<FinishFiringSignal>();
 			Container.DeclareSignal<StartGameSignal>();
-
+			Container.DeclareSignal<FinishGameSignal>();
+			Container.DeclareSignal<EnemyKilledWithGunSignal>();
+			Container.DeclareSignal<UpdateMainViewSignal>();
 			Container.DeclareSignal<EnemyWasDestroyedSignal>();
+			Container.DeclareSignal<PowerUpSignal>();
 		}
 	}
 }

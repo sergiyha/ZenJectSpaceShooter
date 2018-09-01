@@ -68,7 +68,7 @@ namespace Assets.Scripts.UI.Components
 
 				var smooth = Mathf.Pow(tempTime / _settings.TweenTime, 2) * Mathf.Pow(tempTime / _settings.TweenTime, 2);
 
-				Debug.LogError(smooth);
+				//Debug.LogError(smooth);
 				_bodyRect.offsetMax = new Vector2(Mathf.Lerp(-startPosition, finishPos, smooth), _bodyRect.offsetMax.y);
 
 				yield return new WaitForEndOfFrame();
@@ -92,7 +92,7 @@ namespace Assets.Scripts.UI.Components
 
 				var smooth = Mathf.Pow(tempTime / _settings.TweenTime, 2) * Mathf.Pow(tempTime / _settings.TweenTime, 2);
 
-				Debug.LogError(smooth);
+				//Debug.LogError(smooth);
 				_bodyRect.offsetMin = new Vector2(_bodyRect.offsetMin.x, Mathf.Lerp(startPosition, finishPos, smooth));
 
 				yield return new WaitForEndOfFrame();

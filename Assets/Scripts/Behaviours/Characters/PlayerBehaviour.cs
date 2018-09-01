@@ -4,6 +4,7 @@ using Assets.Scripts.Behaviours.Movement;
 using Assets.Scripts.Behaviours.Weapons;
 using Assets.Scripts.Enums;
 using Assets.Scripts.Factories;
+using Assets.Scripts.GameSignals;
 using UnityEngine;
 using Zenject;
 
@@ -13,6 +14,10 @@ namespace Assets.Scripts.Tets
 	{
 		private IMovementBehaviour _movementBehaviour;
 		private IWeaponBehaviour _weaponBehaviour;
+
+		public LayerMask PlayerDestroyes;
+
+		[Inject] private FinishGameSignal _finishingSignal;
 
 		[Inject]
 		public void Init
@@ -28,12 +33,16 @@ namespace Assets.Scripts.Tets
 			_movementBehaviour.Init(this.transform);
 		}
 
-
-
-		private void OnDestroy()
+		private void OnTriggerEnter(Collider other)
 		{
-
+			if (other.CompareTag("Enemy"))
+			{
+				_finishingSignal.Fire(default(object));
+				Destroy(gameObject);
+			}
 		}
+
+
 
 	}
 }

@@ -8,6 +8,7 @@ namespace Assets.Scripts.Installers
 		public override void InstallBindings()
 		{
 			Container.Bind<OpenStartViewCommand>().ToSelf().AsSingle().NonLazy();
+			Container.Bind<OpenFinishingViewCommand>().ToSelf().AsSingle().NonLazy();
 		}
 	}
 }

@@ -23,7 +23,7 @@ namespace Assets.Scripts.Behaviours.Characters
 		private IEnemiesHandler _enemiesHandler;
 
 		private EnemyWasDestroyedSignal _enemyWasDestroyedSignal;
-
+		private EnemyKilledWithGunSignal _enemyKilledWithGunSignal;
 
 		private HittingEffectComponent _hitEffectComp;
 		private EnemyUi _enemyUi;
@@ -36,8 +36,10 @@ namespace Assets.Scripts.Behaviours.Characters
 			EnemiesSettings settings,
 			IEnemiesHandler enemiesHandler,
 			EnemyWasDestroyedSignal enemyDestroyedSignal,
+			EnemyKilledWithGunSignal enemyDestroyedWithGunSignal,
 			EnemyUi enemyUI)
 		{
+			_enemyKilledWithGunSignal = enemyDestroyedWithGunSignal;
 			_enemyWasDestroyedSignal = enemyDestroyedSignal;
 
 			_enemiesHandler = enemiesHandler;
@@ -50,7 +52,7 @@ namespace Assets.Scripts.Behaviours.Characters
 			WeaponBehaviour.Init(transform);
 
 			_enemyUi = enemyUI;
-			_enemyUi.transform.parent = this.transform;
+			_enemyUi.transform.SetParent(this.transform);
 		}
 
 		public void DealDamage(int damageValue)
@@ -61,7 +63,8 @@ namespace Assets.Scripts.Behaviours.Characters
 			_enemyUi.UpdateHealthBar(relativisticDamageValue);
 			if (_damageDealed >= _enemyData.LifePoints)
 			{
-				Debug.LogError("Damege dealed");
+				//Debug.LogError("Damege dealed");
+				_enemyKilledWithGunSignal.Fire();
 				_enemiesHandler.DestroyEnemy(gameObject);
 			}
 		}

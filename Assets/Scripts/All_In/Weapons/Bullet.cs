@@ -26,7 +26,7 @@ namespace Assets.Scripts.All_In.Weapons
 
 		private void HandleTheCollision(GameObject go)
 		{
-			Debug.LogError(go.name);
+			//Debug.LogError(go.name);
 			_enemiesHandler.MakeDamage(go, _damage);
 			Destroy(this.gameObject);
 		}

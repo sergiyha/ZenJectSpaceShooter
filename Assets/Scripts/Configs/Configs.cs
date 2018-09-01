@@ -20,6 +20,7 @@ namespace Assets.Scripts.Configs
 			public const string UIMainPath = "Prefabs/UI/";
 			public const string BulletPrefabPath = "Prefabs/Bullet";
 			public const string EnemyUiPath = "Prefabs/EnemyUI";
+			public const string PowerUpBehPath = "Prefabs/PowerUpBehaviour";
 		}
 	}
 }

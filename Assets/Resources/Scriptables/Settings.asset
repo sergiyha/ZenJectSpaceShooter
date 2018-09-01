@@ -16,16 +16,25 @@ MonoBehaviour:
     MinMaxY: {x: -40, y: 40}
     Speed: 50
   WeaponSettings:
-    bulletDamage: 10
-    BulletSpeed: 180.4
-    BulletsCount: 50
+    BulletDamage: 30
+    BulletSpeed: 75
+    BulletsCount: 20
     PerSecondsCount: 1
     Guns:
     - starPos: {x: -2.83, y: 0}
       endPos: {x: 0, y: 110}
     - starPos: {x: 2.83, y: 0}
       endPos: {x: 0, y: 110}
+  GunsSettings:
+    GunsVariations:
+    - GunsContainer:
+      - starPos: {x: -2.83, y: 0}
+        endPos: {x: 0, y: 110}
+      - starPos: {x: 2.83, y: 0}
+        endPos: {x: 0, y: 110}
+    - GunsContainer: []
   WavesSettings:
+    TimeToReady: 3
     Trajectories:
     - Vectors:
       - {x: 2.2, y: 52.7}
@@ -99,13 +108,20 @@ MonoBehaviour:
       - {x: -18.9, y: 4.4}
       - {x: -19, y: 72.3}
     WavesData:
-    - Number: 0
+    - Number: 1
       TimeBetweenEnemy: 0.3
       TimeBetweenWaves: 3
       TimeBetweenSubwave: 0.5
-      SubwavesCount: 100
-      EnemySpeed: 25
-      EnemiesInSubwave: 100
+      SubwavesCount: 2
+      EnemySpeed: 15
+      EnemiesInSubwave: 5
+    - Number: 2
+      TimeBetweenEnemy: 0.3
+      TimeBetweenWaves: 3
+      TimeBetweenSubwave: 0.5
+      SubwavesCount: 3
+      EnemySpeed: 30
+      EnemiesInSubwave: 10
   Enemies:
     Enemies:
     - ViewPath: Prefabs/UFO

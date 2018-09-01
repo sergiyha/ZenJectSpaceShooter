@@ -1,8 +1,11 @@
-﻿using Assets.Scripts.All_In.Async;
+﻿using System.Collections;
+using Assets.Scripts.All_In.Async;
 using Assets.Scripts.All_In.Commands;
 using Assets.Scripts.Behaviours;
 using Assets.Scripts.Controllers;
 using Assets.Scripts.Controllers.EnemiesHandler;
+using Assets.Scripts.Controllers.PowerUpAbsorber;
+using Assets.Scripts.Controllers.PowerUpCreator;
 using Assets.Scripts.UI.Controller;
 using Inputs;
 using Zenject;
@@ -20,11 +23,13 @@ namespace Assets.Scripts.Installers
 			BehaviourInstaller.Install(Container);
 			SettingsInstaller.Install(Container);
 			SignalInstaller.Install(Container);
+			
 
 			Container.Bind<IViewPoolController>().To<ViewPoolController>().AsSingle().NonLazy();
 			Container.Bind<IWavesController>().To<WavesController>().AsSingle().NonLazy();
 			Container.Bind<IEnemiesHandler>().To<EnemiesHandler>().AsSingle().NonLazy();
-
+			Container.Bind<IPowerUpObsorber>().To<PowerUpObsorber>().AsSingle().NonLazy();
+			Container.Bind<IPowerUpCreator>().To<PowerUpCreator>().AsSingle().NonLazy();
 			Container.Bind<AsyncProcessor>().FromNewComponentOnNewGameObject().AsSingle();
 		}
 	}

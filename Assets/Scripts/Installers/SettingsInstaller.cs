@@ -14,9 +14,10 @@ namespace Assets.Scripts.Installers
 		{
 			Container.Bind<Settings>().FromScriptableObjectResource(Configs.Configs.Scriptables.SettingsPath).AsSingle();
 			Container.Bind<PlayerMovementBehaviour.Settings>().FromResolveGetter<Settings>(s => s.GetMovementSettings).AsSingle();
-			Container.Bind<Weapon.Settings>().FromResolveGetter<Settings>(s => s.GetWeaponSettings).AsSingle();
+			Container.Bind<Weapon.Settings>().FromResolveGetter<Settings>(s => s.GetWeaponSettings.Clone()).AsSingle();
 			Container.Bind<WavesController.SettingsWrapper>().FromResolveGetter<Settings>(s => s.GetWavesSettings).AsSingle();
 			Container.Bind<EnemyBehaviour.EnemiesSettings>().FromResolveGetter<Settings>(s => s.GetEnemiesSettings).AsSingle();
+			Container.Bind<Weapon.GunsSetting>().FromResolveGetter<Settings>(s => s.GetGuns).AsSingle();
 		}
 
 	}

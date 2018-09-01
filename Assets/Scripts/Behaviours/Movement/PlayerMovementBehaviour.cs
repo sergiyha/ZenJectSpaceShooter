@@ -1,5 +1,6 @@
 ﻿using System;
 using Assets.Scripts.Behaviours.Weapons;
+using Assets.Scripts.GameSignals;
 using Assets.Scripts.Inputs.Signals;
 using UnityEngine;
 using Zenject;
@@ -17,12 +18,19 @@ namespace Assets.Scripts.Behaviours.Movement
 		(
 			MoveVerticalSignal ySignal,
 			MoveHorizontalSignal xSignal,
-			Settings movementSettings
+			Settings movementSettings,
+			FinishGameSignal finishSignal
 		)
 		{
 			_settings = movementSettings;
 			ySignal += MoveY;
 			xSignal += MoveX;
+
+			finishSignal += (o) =>
+			{
+				ySignal -= MoveY;
+				xSignal -= MoveX;
+			};
 		}
 
 		private void MoveX(float value)
@@ -64,15 +72,6 @@ namespace Assets.Scripts.Behaviours.Movement
 			//throw new NotImplementedException();
 		}
 
-		public void PerformToMove(Object payload)
-		{
-			throw new NotImplementedException();
-		}
-
-	
-
-		
-		
 
 		[Serializable]
 		public class Settings

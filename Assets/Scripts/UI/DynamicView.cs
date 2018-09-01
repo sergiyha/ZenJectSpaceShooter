@@ -86,7 +86,7 @@ namespace Assets.Scripts.UI
 		public override void Show()
 		{
 			base.Show();
-			InitRects();
+			//InitRects();
 		}
 
 		[Serializable]

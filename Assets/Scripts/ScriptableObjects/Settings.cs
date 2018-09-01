@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.All_In.Weapons;
+﻿using System.Security.Permissions;
+using Assets.Scripts.All_In.Weapons;
 using Assets.Scripts.Behaviours;
 using Assets.Scripts.Behaviours.Characters;
 using Assets.Scripts.Behaviours.Movement;
@@ -9,16 +10,21 @@ namespace Assets.Scripts.ScriptableObjects
 {
 	public class Settings : ScriptableObject
 	{
-		[SerializeField]
-		private PlayerMovementBehaviour.Settings MovementSettings;
+		[SerializeField] private PlayerMovementBehaviour.Settings MovementSettings;
 
-		[SerializeField]
-		private Weapon.Settings WeaponSettings;
+		[SerializeField] private Weapon.Settings WeaponSettings;
+
+		[SerializeField] private Weapon.GunsSetting GunsSettings;
 
 		[SerializeField] private WavesController.SettingsWrapper WavesSettings;
 
 		[SerializeField] private EnemyBehaviour.EnemiesSettings Enemies;
 
+
+		public Weapon.GunsSetting GetGuns
+		{
+			get { return GunsSettings; }
+		}
 
 		public EnemyBehaviour.EnemiesSettings GetEnemiesSettings
 		{
